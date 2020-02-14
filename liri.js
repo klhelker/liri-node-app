@@ -1,46 +1,55 @@
-require("dotenv").config()
+require("dotenv").config();
 
-console.log(process.env.USER_NAME)
-console.log(process.env.USER_EMAIL)
-// var axios = require("axios");
+var keys = require("./keys.js");
+var spotify = new Spotify(keys.spotify);
+var axios = require("axios");
+
+`concert-this`
+
+
+// var Spotify = require('node-spotify-api');
+
+spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+ 
+console.log(data); 
+});
+// spotify
+//   .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
+//   .then(function(data) {
+//     console.log(data); 
+//   })
+//   .catch(function(err) {
+//     console.error('Error occurred: ' + err); 
+//   });
 
 // // Store all of the arguments in an array
 // var nodeArgs = process.argv;
 
-// // Create an empty variable for holding the movie name
-// var movieName = "";
+// // Create an empty variable for holding the artist name
+// var artist = "";
 
 // // Loop through all the words in the node argument
 // // And do a little for-loop magic to handle the inclusion of "+"s
 // for (var i = 2; i < nodeArgs.length; i++) {
 
 //   if (i > 2 && i < nodeArgs.length) {
-//     movieName = movieName + "+" + nodeArgs[i];
+//     artist = artist + "+" + nodeArgs[i];
 //   } else {
-//     movieName += nodeArgs[i];
+//     artist += nodeArgs[i];
+//   }};
 
-//   }
-// }
-
-// // Then run a request with axios to the OMDB API with the movie specified
-// var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+//   var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
 
 // // This line is just to help us debug against the actual URL.
 // console.log(queryUrl);
 
-// axios.get("http://www.artists.bandsintown.com/bandsintown-ap").then(
+// axios.get(queryUrl).then(
 //   function(response) {
 //     console.log(response);
 //   })
-// axios.get("http://www.omdbapi.com").then(function(response) {
-//     console.log(response);
-// })
-// axios.get("https://www.npmjs.com/package/node-spotify-api").then(
-//     function(response) {
-//         console.log(response);
-//     }
-// )
-// axios.get()
 //   .catch(function(error) {
 //     if (error.response) {
 //       // The request was made and the server responded with a status code
@@ -59,5 +68,5 @@ console.log(process.env.USER_EMAIL)
 //       // Something happened in setting up the request that triggered an Error
 //       console.log("Error", error.message);
 //     }
-//     console.log(error.config);
+//       console.log(error.config);
 //   });
