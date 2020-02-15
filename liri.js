@@ -1,21 +1,65 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-var spotify = new Spotify(keys.spotify);
+var Spotify = require('node-spotify-api');
 var axios = require("axios");
+var spotify = new Spotify(keys.spotify);
 
-`concert-this`
+var userCommand = process.argv[2];
+var searchQuery = process.argv[3];
+
+switch(userCommand){
+  case "concert-this":
+    concertThis(searchQuery);
+    break;
+  case "spotify-this-song":
+    spotifySong(searchQuery);
+    break;
+  case "movie-this":
+    movieThis(searchQuery);
+    break;
+  case "do-what-it-says":
+    doWhatItSays();
+    break;
+  default:
+    console.log("Pick a option");
 
 
-// var Spotify = require('node-spotify-api');
-
-spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-  if (err) {
-    return console.log('Error occurred: ' + err);
+}
+function concertThis(artist){
+ axios.get(`https://rest.bandsintown.com/artists/${artist}events?app_id=codingbootcamp`).then(
+  function(response) {
+    // Then we print out the imdbRating
+    console.log(response);
   }
+);
+}
+
+
+function spotifySong(songName){
+  spotify.search(
+    {
+      type: "track",
+      query: songName
+    }, 
+    function(err,data){
+      if (err) throw err;
+
+      for(var i = 0; i < data.tracks.items.length; i++)
+        console.log(data.tracks.items[i].name)
+      }
+  )
+}
+
+//spotifySong("Help")
+
+// spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+//   if (err) {
+//     return console.log('Error occurred: ' + err);
+//   }
  
-console.log(data); 
-});
+// console.log(data); 
+// });
 // spotify
 //   .request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
 //   .then(function(data) {
