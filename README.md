@@ -2,8 +2,6 @@
 ## LIRI APP                                                                       
 ###Author:  Kristin Helker
 
-
- https://drive.google.com/file/d/1Tb8Qz0ydMOVaabZdMROXCasHnNOlpXFC/view
  
 
  LIRI is like iPhone's SIRI. Unlike Siri, LIRI is a Language Interpretation and Recognition Interface. LIRI is a command line app that will take in user commands and give the user back an answer.  The commands necessary to run Liri are:
@@ -66,7 +64,11 @@ To operate Liri open file in the terminal and in the command line write the foll
 
     
         * Using the `fs` Node package, LIRI will take the text inside of 
-          random.txt and then use it to call one of LIRI's commands.
+         
+
+### For a live video example go to:
+ 
+https://drive.google.com/file/d/1Tb8Qz0ydMOVaabZdMROXCasHnNOlpXFC/view  random.txt and then use it to call one of LIRI's commands.
 
 #Technologies Used
 
