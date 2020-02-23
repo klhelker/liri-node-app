@@ -5,6 +5,7 @@ var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var axios = require("axios");
 var spotify = new Spotify(keys.spotify);
+var moment = require('moment');
 
 var userCommand = process.argv[2];
 
@@ -53,8 +54,8 @@ function concertThis(artist){
     console.log("Venue: " + response.data[i].venue.name);
     //Venue Location
     console.log("Venue Location: " + response.data[i].city);
-    //Date of Event 
-    console.log("Date of Event: " + response.data.Country);
+    // const date = moment(d).format('DD/MM/YYYY'); 
+    console.log("Date of Event: " + response.data.moment().format('L'));
     }
   })
   .catch(function(error) {
