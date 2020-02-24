@@ -48,14 +48,14 @@ function concertThis(artist){
     // Name of the venue
 
     // * Venue location
-    for (var i = 0; i < nodeArgs.length; i++){
+    for (var i = 0; i < artist.length; i++){
     // * Date of the Event (use moment to format this as "MM/DD/YYYY")
     //Name of Venue
-    console.log("Venue: " + response.data[i].venue.name);
+    console.log("Venue: " + response.data[1].venue.name);
     //Venue Location
-    console.log("Venue Location: " + response.data[i].city);
-    // const date = moment(d).format('DD/MM/YYYY'); 
-    console.log("Date of Event: " + response.data.moment().format('L'));
+    console.log("Venue Location: " + response.data[1].venue.city);
+    var date = moment(response.data[0].datetime).format('MM/DD/YYYY'); 
+    console.log("Date of Event: " + date);
     }
   })
   .catch(function(error) {
@@ -73,6 +73,7 @@ function concertThis(artist){
       console.log("Error", error.message);
     }
       console.log(error.config);
+      
   });
     
 }
