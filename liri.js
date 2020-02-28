@@ -46,15 +46,14 @@ function concertThis(artist){
  axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp").then(
   function(response) {
     // Name of the venue
-
     // * Venue location
-    for (var i = 0; i < artist.length; i++){
+    for (var i = 0; i < response.data.length; i++){
     // * Date of the Event (use moment to format this as "MM/DD/YYYY")
     //Name of Venue
-    console.log("Venue: " + response.data[1].venue.name);
+    console.log("Venue: " + response.data[i].venue.name);
     //Venue Location
-    console.log("Venue Location: " + response.data[1].venue.city);
-    var date = moment(response.data[0].datetime).format('MM/DD/YYYY'); 
+    console.log("Venue Location: " + response.data[i].venue.city);
+    var date = moment(response.data[i].datetime).format('MM/DD/YYYY'); 
     console.log("Date of Event: " + date);
     }
   })
@@ -119,7 +118,6 @@ function movieThis(movieName){
     console.log("Release Year: " + response.data.Year);
     console.log("Country: " + response.data.Country);
     console.log("Imdb Ratings: " + response.data.imdbRating);
-    console.log(response.data);
     console.log("Rotten Tomatoes: " + response.data.Ratings[response.data.Ratings.findIndex(index=>index.Source === "Rotten Tomatoes")].Value);
     console.log("Language: " + response.data.Language);
     console.log("Actors: " + response.data.Actors);
@@ -150,23 +148,39 @@ function movieThis(movieName){
 
 function doWhatItSays() {
   
+  var change = ["movie-this", "Jumanji", "concert-this", "Avett Brothers", "spotify-this-song", ""]
+
+  fs.writeFile("random.txt", change, function(error){
+
+    if (error) {
+      return console.log(error);
+    }
+  })
+
   fs.readFile("random.txt", "utf8", function(error, data){
     
+
     if (error) {
       return console.log(error);
     }
   
     console.log(data);
     
-    var dataArr = data.split(", ");
+    var dataArr = data.split(",");
     
     console.log(dataArr);
   
-    if (dataArr.length === 2)
+    if (dataArr.length === 6)
     
     {
         userCommand = dataArr[0];
         searchQuery = dataArr[1];
+        Liri();
+        userCommand = dataArr[2];
+        searchQuery = dataArr[3];
+        Liri();
+        userCommand = dataArr[4];
+        searchQuery = dataArr[5];
         Liri();
     
     }
