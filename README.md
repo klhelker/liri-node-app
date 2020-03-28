@@ -1,6 +1,6 @@
  
 ## LIRI APP                                                                       
-###Author:  Kristin Helker
+### Author:  Kristin Helker
 
  
 
@@ -63,7 +63,7 @@ To operate Liri open file in the terminal and in the command line write the foll
   * node liri.js '< do-what-it-says >'
 
     
-        * Using the `fs` Node package, LIRI will take the text inside of 
+        * Using the `fs` Node package
          
 
 ### For a live video example go to:
